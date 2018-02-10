@@ -2,4 +2,4 @@
 # Description: 
 Android application for write, read, edit and delete tasks
 # Technologies: 
-Java, XML, SQLite, Android Studio, Gradle
+Java, SQL, XML, SQLite, Android Studio, Gradle
