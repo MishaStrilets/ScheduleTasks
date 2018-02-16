@@ -10,22 +10,24 @@
     tools:context="strilets.scheduletasks.MainActivity">
 
     <Button
-        android:id="@+id/btnCreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CREATE NEW TASK" />
+        android:text="Add task"
+        android:id="@+id/btnCreate" />
 
     <TextView
-        android:id="@+id/textTitle"
+        android:id="@+id/textTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="30dp"
         android:text="Tasks:"
-        android:layout_marginTop="50dp" />
+        android:layout_below="@+id/btnCreate" />
 
-    <TextView
-        android:id="@+id/textData"
-        android:layout_width="wrap_content"
+    <ListView
+        android:id="@+id/android:list"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp" />
+        android:layout_below="@id/textTask" />
 
 </RelativeLayout>
