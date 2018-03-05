@@ -46,7 +46,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public List<Task> getAllTasks() {
         SQLiteDatabase db = this.getWritableDatabase();
-        List<Task> countryList = new ArrayList<Task>();
+        List<Task> tasksList = new ArrayList<Task>();
         String selectQuery = "SELECT  * FROM " + TABLE_TASK;
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -56,11 +56,11 @@ public class DBManager extends SQLiteOpenHelper {
                 task.setId(Integer.parseInt(cursor.getString(0)));
                 task.setDescription(cursor.getString(1));
                 task.setStaus(cursor.getString(2));
-                countryList.add(task);
+                tasksList.add(task);
             } while (cursor.moveToNext());
         }
 
-        return countryList;
+        return tasksList;
     }
 
     public int updateTask(Task task) {
