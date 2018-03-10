@@ -1,4 +1,4 @@
-package strilets.scheduletasks;
+package strilets;
 
 public class Task {
     int id;
@@ -34,7 +34,7 @@ public class Task {
         return status;
     }
 
-    public void setStaus(String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

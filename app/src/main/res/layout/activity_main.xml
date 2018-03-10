@@ -7,25 +7,35 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="10dp"
-    tools:context="strilets.scheduletasks.MainActivity">
+    tools:context="strilets.MainActivity">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add task"
-        android:id="@+id/btnCreate" />
+        android:id="@+id/btnAdd"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update list tasks"
+        android:id="@+id/btnUpdate"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/btnAdd" />
 
     <TextView
         android:id="@+id/textTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_margin="10dp"
         android:textSize="30dp"
-        android:text="Tasks:"
-        android:layout_below="@+id/btnCreate" />
+        android:text="List tasks:"
+        android:layout_below="@+id/btnUpdate"
+        android:textColor="@color/colorBlack" />
 
     <ListView
-        android:id="@+id/android:list"
+        android:id="@+id/listTasks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textTask" />

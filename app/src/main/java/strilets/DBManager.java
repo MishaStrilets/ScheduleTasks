@@ -1,4 +1,4 @@
-package strilets.scheduletasks;
+package strilets;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -35,7 +35,7 @@ public class DBManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addTask(Task task) {
+    public void addTask(Task task) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValue = new ContentValues();
         contentValue.put(COLUMN_DESCRIPTION, task.getDescription());
@@ -55,20 +55,23 @@ public class DBManager extends SQLiteOpenHelper {
                 Task task = new Task();
                 task.setId(Integer.parseInt(cursor.getString(0)));
                 task.setDescription(cursor.getString(1));
-                task.setStaus(cursor.getString(2));
+                task.setStatus(cursor.getString(2));
                 tasksList.add(task);
             } while (cursor.moveToNext());
         }
 
+        cursor.close();
+        db.close();
         return tasksList;
     }
 
-    public int updateTask(Task task) {
+    public void updateTask(Task task) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_DESCRIPTION, task.getDescription());
         values.put(COLUMN_STATUS, task.getStatus());
-        return db.update(TABLE_TASK, values, COLUMN_ID + " = ?", new String[] { String.valueOf(task.getId()) });
+        db.update(TABLE_TASK, values, COLUMN_ID + " = ?", new String[] { String.valueOf(task.getId()) });
+        db.close();
     }
 
     public void deleteTask(Task task) {
