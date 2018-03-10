@@ -6,17 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView listTask;
-    Button btnAdd, btnUpdate;
+    Button btnAdd;
     DBManager db;
     TaskAdapter taskAdapter;
-    final String LIST_UPDATE = "List tasks updated.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,25 +35,11 @@ public class MainActivity extends AppCompatActivity {
                 addTask();
             }
         });
-
-        btnUpdate = (Button) findViewById(R.id.btnUpdate);
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateListTasks();
-            }
-        });
     }
 
     public void addTask(){
         Intent saveTask = new Intent(this, SaveTaskActivity.class);
         startActivity(saveTask);
-    }
-
-    public void  updateListTasks(){
-        finish();
-        startActivity(getIntent());
-        Toast.makeText(this, LIST_UPDATE, Toast.LENGTH_LONG).show();
     }
 
 }

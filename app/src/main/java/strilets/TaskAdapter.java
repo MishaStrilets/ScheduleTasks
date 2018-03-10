@@ -65,9 +65,10 @@ public class TaskAdapter extends BaseAdapter {
                 editTask.setId(currentTask.getId());
                 editTask.setDescription(viewHolder.editDescription.getText().toString());
                 editTask.setStatus(viewHolder.editStatus.getText().toString());
-
                 db.updateTask(editTask);
                 Toast.makeText(context, TASK_EDIT, Toast.LENGTH_LONG).show();
+                tasksList = db.getAllTasks();
+                notifyDataSetChanged();
             }
         });
 
@@ -76,6 +77,8 @@ public class TaskAdapter extends BaseAdapter {
             public void onClick(View view) {
                 db.deleteTask(currentTask);
                 Toast.makeText(context, TASK_DELETE, Toast.LENGTH_LONG).show();
+                tasksList = db.getAllTasks();
+                notifyDataSetChanged();
             }
         });
 
