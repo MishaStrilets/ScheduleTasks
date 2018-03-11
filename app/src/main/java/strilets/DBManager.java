@@ -25,7 +25,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_TASK + "(" + COLUMN_ID
+        db.execSQL("create table if not exists " + TABLE_TASK + "(" + COLUMN_ID
                 + " integer primary key," + COLUMN_DESCRIPTION + " text," +  COLUMN_STATUS + " text" + ")");
     }
 
@@ -46,6 +46,7 @@ public class DBManager extends SQLiteOpenHelper {
 
     public List<Task> getAllTasks() {
         SQLiteDatabase db = this.getWritableDatabase();
+        onCreate(db);
         List<Task> tasksList = new ArrayList<Task>();
         String selectQuery = "SELECT  * FROM " + TABLE_TASK;
         Cursor cursor = db.rawQuery(selectQuery, null);
